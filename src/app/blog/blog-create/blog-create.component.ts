@@ -134,7 +134,7 @@ export class BlogCreateComponent implements OnInit {
     //   this.blogForm.reset();
     // })
 
-    this.blogService.UpdateBlog(this.blogForm.value.id, formData).subscribe({
+    this.blogService.SubmitBlog(formData).subscribe({
       next: (response) => {
         console.log('Response from API:', response); 
         if (response.id > 0) {

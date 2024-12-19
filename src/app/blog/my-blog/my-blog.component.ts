@@ -14,7 +14,7 @@ export class MyBlogComponent implements OnInit {
   blogList: any;
   public imageUrl = environment.imageUrl;
   currentPage = 1;
-  pageSize = 4;
+  pageSize = 20;
   totalPages: number =0;
   searchQuery = '';
   userId = sessionStorage.getItem('UserId');
@@ -39,6 +39,7 @@ export class MyBlogComponent implements OnInit {
     this.userId = sessionStorage.getItem('UserId');
     this.blogService.GetPagedBlogList(this.currentPage, this.pageSize, this.userId, this.searchQuery).subscribe(
       (response) => { 
+        debugger
         this.blogList  = response.body; // Access the response body X-Pagination
         const paginationHeader = response.headers.get('X-Pagination');
         if (paginationHeader !== null) {

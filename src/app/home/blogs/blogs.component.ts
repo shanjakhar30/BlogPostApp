@@ -14,7 +14,7 @@ export class BlogsComponent implements OnInit {
   blogList: any;
   public imageUrl = environment.imageUrl;
   currentPage = 1;
-  pageSize = 4;
+  pageSize = 20;
   totalPages: number =0;
   searchQuery = '';
   
@@ -36,7 +36,7 @@ export class BlogsComponent implements OnInit {
   }
   loadBlogs() {
     this.blogService.GetPagedBlogList(this.currentPage, this.pageSize, 0, this.searchQuery).subscribe(
-      (response) => { 
+      (response) => {  
         this.blogList  = response.body; // Access the response body X-Pagination
         const paginationHeader = response.headers.get('X-Pagination');
         if (paginationHeader !== null) {
