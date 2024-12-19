@@ -1,0 +1,35 @@
+ 
+<app-header></app-header>
+<div class="wrapper row3">
+  <main class="hoc container clear">  
+    <div class="content">   
+      <h1>Blog List</h1>
+      <div class="scrollable">
+        <table>
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>Image</th>
+              <th>Title</th>
+              <th>Detail</th>
+              <th>Status</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody> 
+            <tr *ngFor="let row of blogList; let i = index">
+              <td>{{i + 1}}.</td>
+              <td><img src="{{imageUrl}}{{row.image}}" alt="" style="width: 50px !important; height: 50px !important;"></td>
+              <td>{{row.title}}</td>
+              <td>{{row.postContent | slice:0:150}}</td>
+              <td><a class="btn">{{row.isActive ? 'Active' : 'InActive'}}</a></td>
+              <td><a class="btn inverse" (click)="onEditBlog(row.id)">Edit</a></td>
+            </tr> 
+          </tbody>
+        </table>
+      </div>  
+    </div> 
+    <div class="clear"></div>
+  </main>
+</div>
+<app-footer></app-footer>

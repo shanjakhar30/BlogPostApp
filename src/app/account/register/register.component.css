@@ -1,0 +1,5 @@
+.text-danger {
+    width: 100%;
+    margin-top: 0.25rem; /* Adjust as needed */
+    font-size: 0.875rem; /* Make error text smaller if desired */
+  }

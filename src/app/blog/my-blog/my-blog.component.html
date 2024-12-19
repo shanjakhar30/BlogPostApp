@@ -1,0 +1,31 @@
+ 
+<app-header></app-header>
+<body id="top">  
+<!-- End Top Background Image Wrapper --> 
+<div class="wrapper row3">
+  <section class="hoc container clear">  
+    <div class="btmspace-50 center">
+      <h2>My Blogs</h2> 
+    </div>
+    <ul class="nospace group blogList">
+      <ng-container *ngFor="let row of blogList; let i = index">
+        <li class="one_third" [class.first]="i % 3 === 0">
+            <article class="excerpt"><a href="#"><img src="{{imageUrl}}{{row.image}}" alt=""></a>
+              <div class="excerpttxt">
+                <h6 class="heading font-x1">{{row.title}}</h6>
+                <ul class="nospace inline pushright font-xs">
+                  <li><i class="fa fa-calendar-o"></i>{{row.createdAt | date: 'dd-MMM-yyyy'}}</li>
+                  <li><i class="fa fa-comments"></i> <a href="#">6</a>&nbsp;&nbsp;<i class="fa fa-eye"></i> 15</li> 
+                </ul>
+                <p>{{row.postContent | slice:0:110}}&hellip;</p>
+                <p><a href="#">Read More &raquo;</a></p>
+              </div>
+            </article>
+          </li>
+      </ng-container> 
+    </ul> 
+  </section>
+</div>  
+<!-- Footer Background Image Wrapper --> 
+</body> 
+<app-footer></app-footer>

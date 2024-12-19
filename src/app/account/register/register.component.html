@@ -1,0 +1,42 @@
+<div class="register-page bg-body-secondary">
+  <div class="register-box">
+      <div class="card card-outline card-primary">
+          <div class="card-header"> <a [routerLink]="['/']" class="link-dark text-center link-offset-2 link-opacity-100 link-opacity-50-hover">
+                  <h1 class="mb-0"> <b>Blog</b>Register
+                  </h1>
+              </a> </div>
+          <div class="card-body register-card-body">
+              <p class="register-box-msg">Register a new membership</p>
+              <form #registerForm="ngForm" (ngSubmit)="onSubmit(registerForm)">
+                  <div class="input-group mb-2">
+                      <div class="form-floating"> <input id="name" name="name" [(ngModel)]="user.Name" #name="ngModel" class="form-control" placeholder="" required /><label for="name">Name</label> </div>
+                      <div *ngIf="registerForm.submitted || name?.touched" class="text-danger" style="clear: both;">
+                        <small *ngIf="name?.errors?.['required']">Name is required.</small>
+                      </div> 
+                  </div> 
+                  <div class="input-group mb-2">
+                    <div class="form-floating"> <input id="email" name="email" [(ngModel)]="user.Email" #email="ngModel" class="form-control" placeholder="" required /><label for="email">Email</label> </div>
+                    <div *ngIf="registerForm.submitted || email?.touched" class="text-danger">
+                      <small *ngIf="email?.errors?.['required']">Email is required.</small>
+                      <small *ngIf="email?.errors?.['email']">Please enter a valid email address.</small>
+                    </div>
+                </div> 
+                <div class="input-group mb-2">
+                  <div class="form-floating"> <input type="text" id="password" name="password" [(ngModel)]="user.Password" #password="ngModel" class="form-control" placeholder="" required minlength="6" /><label for="password">Password</label> </div>
+                  <div *ngIf="registerForm.submitted || password?.touched" class="text-danger">
+                    <small *ngIf="password?.errors?.['required']">Password is required.</small>
+                    <small *ngIf="password?.errors?.['minlength']">Password must be at least 6 characters long.</small>
+                  </div>
+                </div> 
+                  <div class="row"> 
+                      <div class="col-4">
+                          <div class="d-grid gap-2"> 
+                            <button type="submit" [disabled]="registerForm.invalid" class="btn btn-primary">Register</button> 
+                          </div>
+                      </div>
+                  </div>
+              </form> 
+          </div>
+      </div>
+  </div> 
+</div> 

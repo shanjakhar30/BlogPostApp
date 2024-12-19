@@ -1,0 +1,71 @@
+<app-header></app-header>
+<div class="wrapper row3">
+    <main class="hoc container clear"> 
+      <!-- main body --> 
+      <div class="content">   
+        <div id="comments"> 
+          <h2>Create Blog</h2>
+          <form [formGroup]="blogForm" (ngSubmit)="onSubmit()" enctype="multipart/form-data">
+            <input type="hidden" formControlName="id" class="form-control" />
+            <div class="one_third first">
+              <label for="name">Title <span>*</span></label>
+              <input type="text"  formControlName="title" class="form-control" required>
+              <div *ngIf="formSubmitted && f['title'].errors">
+                <div *ngIf="f['title'].errors['required']">
+                    Blog Title is required
+                </div>
+                <div *ngIf="f['title'].errors['source']">
+                    Blog Title must be at least 1 characters
+                </div>
+                <div *ngIf="f['title'].errors['maxlength']">
+                    Blog Title must not exceed 200 characters
+                </div>
+            </div>
+            </div>
+            <div class="one_third">
+              <label for="ShortContent">Blog Details <span>*</span></label>
+              <input type="text" formControlName="shortContent" class="form-control"  required>
+              <div *ngIf="formSubmitted && f['shortContent'].errors">
+                <div *ngIf="f['shortContent'].errors['required']">
+                    Blog Details is required
+                </div>
+                <div *ngIf="f['shortContent'].errors['source']">
+                    Blog Details must be at least 5 characters
+                </div>
+                <div *ngIf="f['shortContent'].errors['maxlength']">
+                    Blog Details must not exceed 200 characters
+                </div>
+              </div>
+            </div>
+            <div class="block clear">
+                <label for="postContent">Blog Description <span>*</span></label>
+                <textarea formControlName="postContent" cols="25" rows="10" class="form-control"></textarea> 
+                <div *ngIf="formSubmitted && f['postContent'].errors"> 
+                    <div *ngIf="f['postContent'].errors['required']">
+                        Blog Description is required
+                    </div>
+                    <div *ngIf="f['postContent'].errors['source']">
+                        Blog Description must be at least 5 characters
+                    </div>
+                    <div *ngIf="f['postContent'].errors['maxlength']">
+                        Blog Description must not exceed 200 characters
+                    </div>
+                </div>
+            </div> 
+            <div class="block clear">
+                <label for="postContent">Select Image <span>*</span></label>
+                <input type="file" id="blogImage" (change)="onFileSelect($event)"  class="form-control">
+            </div> 
+            <div>
+              <input type="submit" name="submit" value="Submit" class="btn btn-primary">
+              &nbsp; 
+              <input type="reset" name="reset" value="Reset" class="btn btn-primary">
+            </div>
+          </form>
+        </div> 
+      </div> 
+      <!-- / main body -->
+      <div class="clear"></div>
+    </main>
+  </div> 
+  <app-footer></app-footer>
