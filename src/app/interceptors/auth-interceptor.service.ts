@@ -9,14 +9,17 @@ import { AccountService } from '../services/account/account.service';
 export class AuthInterceptorService implements HttpInterceptor {
 
   constructor(private loginService : AccountService) { }
-  intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-    const authToken = this.loginService.getToken()  
-    const authReq = req.clone({
-      setHeaders: {
-        Authorization: 'Bearer ' + authToken
-      }
-    });
-    console.log('authReq:', authReq); 
-    return next.handle(authReq);
+  intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> { 
+    const token = sessionStorage.getItem('Token'); 
+    if (token) {
+      const authReq = req.clone({
+        setHeaders: {
+          Authorization: `Bearer ${token}`
+        }
+      }); 
+      return next.handle(authReq);
+    } else {
+      return next.handle(req);
+    } 
   }
 }
