@@ -16,22 +16,27 @@ export class BlogService {
   constructor(private http: HttpClient) { }
 
   SubmitBlog(formData: FormData): Observable<any> {
-    const url = `${environment.apiUrl}${environment.endpoints.createBlog}`; 
-    return this.http.post<any>(url, formData, {
-      headers: new HttpHeaders({
-        // 'Content-Type': 'multipart/form-data', // Do NOT set this header, it's handled automatically
-      })
-    });
-  }
-
-  UpdateBlog(id:bigint, formData: FormData): Observable<any> {
-    const url = `${environment.apiUrl}${environment.endpoints.updateBlog}`; 
-    return this.http.put<any>(`${url}?id=${id}`, formData, {
-      headers: new HttpHeaders({
-        // 'Content-Type': 'multipart/form-data', // Do NOT set this header, it's handled automatically
-      })
-    });
-  }
+    debugger
+    const id = formData.get('id');
+       if (id !== null || id !== '0') 
+      {
+        const url = `${environment.apiUrl}${environment.endpoints.updateBlog}`; 
+        return this.http.put<any>(`${url}?id=${id}`, formData, {
+          headers: new HttpHeaders({
+            // 'Content-Type': 'multipart/form-data', // Do NOT set this header, it's handled automatically
+          })
+        });
+      }
+      else
+      {
+        const url = `${environment.apiUrl}${environment.endpoints.createBlog}`; 
+        return this.http.post<any>(url, formData, {
+          headers: new HttpHeaders({
+            // 'Content-Type': 'multipart/form-data', // Do NOT set this header, it's handled automatically
+          })
+        });
+      }  
+  } 
 
   GetAllBlog(): Observable<any[]> {
     return this.http.get<any>(`${this.apiUrl}/GetAllBlog`, this.httpOptions).pipe(
