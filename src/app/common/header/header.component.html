@@ -9,9 +9,9 @@
       <div class="fl_right">
         <ul class="nospace">
           <li><a routerLink="/"><i class="fa fa-lg fa-home"></i></a></li>
-          <li *ngIf="this.userId != '0'"><a routerLink="my-blog">My Blogs</a></li>
-          <li *ngIf="this.userId != '0'"><a routerLink="blog-listing">Blog List</a></li>
-          <li *ngIf="this.userId != '0'"><a routerLink="blog-create">Blog Create</a></li> 
+          <li *ngIf="this.userId != '0'"><a routerLink="/my-blog">My Blogs</a></li>
+          <li *ngIf="this.userId != '0'"><a routerLink="/blog-listing">Blog List</a></li>
+          <li *ngIf="this.userId != '0'"><a routerLink="/blog-create">Blog Create</a></li> 
           <li><a href="#">Contact</a></li>
           <li *ngIf="this.userId == '0'"><a routerLink="account/login">Login</a></li>
           <li *ngIf="this.userId == '0'"><a routerLink="account/register">Register</a></li> 

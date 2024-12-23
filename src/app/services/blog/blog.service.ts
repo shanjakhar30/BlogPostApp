@@ -15,8 +15,7 @@ export class BlogService {
   };
   constructor(private http: HttpClient) { }
 
-  SubmitBlog(formData: FormData): Observable<any> {
-    debugger
+  SubmitBlog(formData: FormData): Observable<any> { 
     const id = formData.get('id');
        if (id !== null || id !== '0') 
       {
