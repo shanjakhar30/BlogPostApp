@@ -32,8 +32,7 @@ export class BlogListingComponent implements OnInit {
     });
   }
 
-  onEditBlog(value: any) {
-    debugger;
+  onEditBlog(value: any) { 
     this.router.navigate(['/blog-create', value]);
   }
 
@@ -43,8 +42,7 @@ export class BlogListingComponent implements OnInit {
   loadBlogs() { 
     this.userId = sessionStorage.getItem('UserId');
     this.blogService.GetPagedBlogList(this.currentPage, this.pageSize, this.userId, this.searchQuery).subscribe(
-      (response) => { 
-        debugger
+      (response) => {  
         this.blogList  = response.body; // Access the response body X-Pagination
         const paginationHeader = response.headers.get('X-Pagination');
         if (paginationHeader !== null) {

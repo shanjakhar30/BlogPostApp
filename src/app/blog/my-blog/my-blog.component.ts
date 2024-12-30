@@ -38,8 +38,7 @@ export class MyBlogComponent implements OnInit {
   loadBlogs() { 
     this.userId = sessionStorage.getItem('UserId');
     this.blogService.GetPagedBlogList(this.currentPage, this.pageSize, this.userId, this.searchQuery).subscribe(
-      (response) => { 
-        debugger
+      (response) => {  
         this.blogList  = response.body; // Access the response body X-Pagination
         const paginationHeader = response.headers.get('X-Pagination');
         if (paginationHeader !== null) {

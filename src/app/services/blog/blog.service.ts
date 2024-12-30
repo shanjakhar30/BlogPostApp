@@ -1,7 +1,6 @@
 import { HttpClient, HttpHeaders, HttpParams, HttpResponse } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
-import { tap, catchError } from 'rxjs/operators';
-import { isPlatformBrowser } from '@angular/common';
+import { tap, catchError } from 'rxjs/operators'; 
 import { Injectable } from '@angular/core';  
 import { environment } from '../../../environments/environment.development';
 
@@ -61,12 +60,10 @@ export class BlogService {
     );
   }
 
-  GetBlogById(blogId: bigint): Observable<any[]> {
-    debugger
+  GetBlogById(blogId: bigint): Observable<any[]> { 
     const url = `${environment.apiUrl}${environment.endpoints.getBlogById}`; 
     return this.http.get<any>(`${url}?id=${blogId}`, this.httpOptions).pipe(
-      tap((response: any) => {
-        debugger
+      tap((response: any) => { 
       }),
       catchError(this.handleError<any>('Get'))
     );

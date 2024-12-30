@@ -1,9 +1,8 @@
-import { NgModule, Component, Injectable, OnInit } from '@angular/core';
-import {  AbstractControl,  FormBuilder,  FormGroup,  FormControl,  Validators} from '@angular/forms';
-import {  NgClass,  NgIf,  NgFor,  DatePipe,  DOCUMENT,  isPlatformBrowser,  formatDate,} from '@angular/common';
+import { Component, OnInit } from '@angular/core';
+import {  AbstractControl,  FormBuilder,  FormGroup,  FormControl,  Validators} from '@angular/forms'; 
 import { BlogService } from '../../services/blog/blog.service';
 
-import { Router, Routes, ActivatedRoute } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { environment } from '../../../environments/environment.development';
 
 @Component({
@@ -73,8 +72,7 @@ export class BlogCreateComponent implements OnInit {
   }
 
   GetBlogById(value: any) {
-    this.blogService.GetBlogById(value).subscribe(data => {
-      debugger
+    this.blogService.GetBlogById(value).subscribe(data => { 
       this.formDataRespo = data;
       console.log(" GetBlogById res" + JSON.stringify(this.formDataRespo));
       this.blogForm.setValue({
